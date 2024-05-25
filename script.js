@@ -1,61 +1,55 @@
-window.addEventListener('resize', function () {
-    addRequireClass();
-});
-
-// Function for appearing hamburger icon
-function addRequireClass() {
-    if (window.innerWidth < 760) {
+function addRequiredClass() {
+    if (window.innerWidth < 768) {
         document.body.classList.add('mobile');
     } else {
         document.body.classList.remove('mobile');
     }
 }
-window.onload = addRequireClass();
 
-// Getting and setting of hamburger icon
-let hamburger = document.querySelector('.hamburger');
-let mobileNav = document.querySelector('.nav-list');
-let navLinks = document.querySelectorAll('.nav-list li a');
+window.onload = addRequiredClass
+window.onresize = addRequiredClass
 
-let bars = document.querySelectorAll('.hamburger span');
+let hamburger = document.querySelector(".hamburger");
+let mobileNav = document.querySelector(".nav-list");
+
+console.log(hamburger);
+
+let bars = document.querySelectorAll(".hamburger span");
+
 let isActive = false;
 
-hamburger.addEventListener('click', function () {
-    mobileNav.classList.toggle('open');
+hamburger.addEventListener("click", function () {
+    mobileNav.classList.toggle("open");
     if (!isActive) {
-        bars[0].style.transform = 'rotate(45deg)';
-        bars[0].style.position = 'absolute';
-        bars[1].style.opacity = '0';
-        bars[2].style.transform = 'rotate(-45deg)';
-        bars[2].style.position = 'absolute';
+        bars[0].style.transform = "rotate(45deg)";
+        bars[1].style.opacity = "0";
+        bars[2].style.transform = "rotate(-45deg)";
         isActive = true;
     } else {
-        bars[0].style.transform = 'rotate(0)';
-        bars[0].style.position = 'static';
-        bars[1].style.opacity = '1';
-        bars[2].style.transform = 'rotate(0)';
-        bars[2].style.position = 'static';
+        bars[0].style.transform = "rotate(0deg)";
+        bars[1].style.opacity = "1";
+        bars[2].style.transform = "rotate(0deg)";
         isActive = false;
     }
-});
 
+})
+
+let links = document.querySelectorAll(".nav-list li a");
+links.forEach(link => {
+    link.addEventListener("click", function () {
+        mobileNav.classList.remove("open");
+        bars[0].style.transform = "rotate(0deg)";
+        bars[1].style.opacity = "1";
+        bars[2].style.transform = "rotate(0deg)";
+        isActive = false;
+    })
+})
+
+
+// Scroll to top button
 document.querySelector('.home-btn').addEventListener('click', function () {
     document.querySelector('#about-section').scrollIntoView({
         behavior: 'smooth'
-    });
-});
-
-
-// Close the navbar when a link is clicked
-navLinks.forEach(link => {
-    link.addEventListener('click', function () {
-        mobileNav.classList.remove('open');
-        bars[0].style.transform = 'rotate(0)';
-        bars[0].style.position = 'static';
-        bars[1].style.opacity = '1';
-        bars[2].style.transform = 'rotate(0)';
-        bars[2].style.position = 'static';
-        isActive = false;
     });
 });
 

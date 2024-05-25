@@ -222,22 +222,22 @@ img {
   justify-content: center;
 }
 
-.btn-img {
+/* .btn-img {
   width: 24px;
   height: 24px;
   fill: var(--primary-text-color);
-  animation: bounce 2s infinite;
-  z-index: 1;
+  animation: bounce 2s ease-in-out infinite;
 }
 
 @keyframes bounce {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
     transform: translateY(-5px);
   }
-}
+} */
 
 .arrow-icon {
   display: flex;
@@ -259,107 +259,64 @@ img {
 }
 
 /* Basic styles for the navbar */
-
-/* Basic styles for the navbar */
 .nav-wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  z-index: 99999;
 }
 
-.nav-wrapper .logo h1 {
-  font-size: 4rem;
+.brand {
+  font-size: 2.5rem;
 }
 
 .nav-wrapper ul.nav-list {
-  list-style-type: none;
   display: flex;
   align-items: center;
-  justify-content: end;
+  gap: var(--mb-2);
 }
 
 .nav-wrapper ul.nav-list li {
-  margin-left: 30px;
-  padding: 20px 0;
   position: relative;
 }
 
 .nav-wrapper ul.nav-list li a {
   color: var(--primary-text-color);
-  text-decoration: none;
   letter-spacing: 1px;
   transition: all 0.5s ease-in-out;
+  position: relative;
+  padding: 0.5rem;
 }
 
-.nav-wrapper ul.nav-list li a:hover {
+.nav-wrapper ul.nav-list li a:hover,
+.nav-wrapper ul.nav-list li.active a {
   color: #e700ec;
 }
 
-.nav-wrapper ul.nav-list li a::after {
+.hover-line::after {
   content: "";
   display: block;
   width: 0;
   height: 2px;
   background: #e700ec;
   transition: width 0.3s;
-}
-
-.nav-wrapper ul.nav-list li a:hover::after {
-  width: 100%;
-  color: #e700ec;
-}
-
-nav ul.dropdown-list {
-  list-style-type: none;
-  display: block;
-  background: var(--primary-background-color);
-  padding: 6px 16px;
   position: absolute;
-  width: max-content;
-  z-index: 9999;
-  left: 50%;
-  transform: translateX(-50%);
-  opacity: 0;
-  pointer-events: none;
+  bottom: -5px;
+  left: 0;
 }
 
-.nav-wrapper ul.dropdown-list li {
-  margin-left: 0;
-  padding: 5px 0;
+.hover-line:hover::after {
+  width: 100%;
 }
 
-.nav-wrapper ul.dropdown-list li a {
-  color: var(--primary-text-color);
-}
-
-.nav-wrapper ul.nav-list li:hover .dropdown-list {
-  opacity: 1;
-  pointer-events: auto;
-  animation: moveUp 0.5s ease-in-out forwards;
-}
-
-/* Animation for dropdown list */
 @keyframes moveUp {
   0% {
-    opacity: 0;
-    transform: translateX(-50%) translateY(50px);
+    transform: translateY(50px);
   }
   100% {
-    opacity: 1;
-    transform: translateX(-50%) translateY(20px);
+    transform: translateY(0);
   }
 }
 
-main section.header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  margin-top: 160px;
-}
-
-/* Hamburger menu styles */
 .hamburger {
   display: none;
 }
@@ -376,59 +333,42 @@ main section.header {
   width: 28px;
   height: 2px;
   margin-bottom: 8px;
-  transition: all 0.3s ease-in-out;
 }
 
 .mobile ul.nav-list {
   background: var(--primary-background-color);
   position: fixed;
-  left: 0;
   top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
+  padding-top: 100px;
   opacity: 0;
   pointer-events: none;
   transition: all 0.3s ease-in-out;
-}
-
-.mobile ul.nav-list.open {
-  opacity: 1;
-  pointer-events: auto;
-  padding: 80px 100px;
-  margin: 0 auto;
-  z-index: 9;
-}
-
-.mobile ul.nav-list li {
-  margin-left: 0;
-  text-align: center;
-}
-
-.mobile ul.nav-list li a {
-  font-size: 20px;
-}
-
-.mobile ul.dropdown-list {
-  position: relative;
-  background: transparent;
-  text-align: center;
-  height: 0;
-  overflow-y: hidden;
-  transition: opacity 1s ease-in-out;
-  padding-top: 0;
-}
-
-.mobile .nav-wrapper ul li:hover .dropdown-list {
-  height: max-content;
-  padding-top: 6px;
 }
 
 .hamburger,
 .brand {
   z-index: 9999;
 }
+
+.mobile ul.nav-list.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobile .hamburger span {
+  transform-origin: left;
+  transition: all 0.3s ease-in-out;
+}
+
+.mobile ul.nav-list li a {
+  font-size: 20px;
+}
+
 /* End of Navbar section */
 
 /* Home section */
@@ -549,13 +489,12 @@ main section.header {
   gap: 2rem;
 }
 
-.project-image{
+.project-image {
   width: 200px;
   height: 200px !important;
   object-fit: cover;
   border-radius: 6px;
 }
-
 
 .project-caption {
   display: grid;
@@ -901,10 +840,10 @@ main section.header {
   }
 
   /* Project section */
-  .project-image{
-  width: 200px;
-  height: 128px !important;
-  object-fit: cover;
-  border-radius: 6px;
-}
+  .project-image {
+    width: 200px;
+    height: 128px !important;
+    object-fit: cover;
+    border-radius: 6px;
+  }
 }
