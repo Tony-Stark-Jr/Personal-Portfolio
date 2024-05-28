@@ -60,7 +60,6 @@
     --h2-font-size: 47px;
     --h3-font-size: 36px;
     --h4-font-size: 27px;
-    /* --h5-font-size: ; */
     --normal-font-size: 21px;
     --small-font-size: 16px;
   }
@@ -81,9 +80,8 @@
 html,
 body {
   scroll-behavior: smooth;
-  position: relative;
   height: 100%;
-  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
@@ -773,6 +771,8 @@ img {
 
 /* Media queries */
 @media screen and (max-width: 768px) {
+ 
+
   #service-section {
     padding: var(--mb-2) 0;
   }
